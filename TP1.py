@@ -30,3 +30,7 @@ if __name__ == '__main__':
     a = np.array([[1, 2, 3], [4, 5, 6]])
     print(a.mean())
 
+    print("Nique toi enculé :")
+    input = input()
+    print(type(int(input)))
+
