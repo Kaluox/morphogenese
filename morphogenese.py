@@ -194,18 +194,16 @@ class Morphogene():
         self.i = self.i * (1 - self.taux_resorption)
 
     def seuiller(self):
-        mean = self.a.mean()
-        print(mean)
+        print(self.a.mean())
         for i in range(self.height):
             for j in range(self.width):
-                # if (self.seuil_activation < self.a[i][j]):
-                if (mean < self.a[i][j]):
+                if (self.a.mean() < self.a[i][j]):
+                    # self.result[i][j] = [1, 73, 255]  # Rouge feu
                     self.result[i][j] = [119, 2, 108] #Zinzolin
-                    # self.result[i][j] = self.couleur1 #Zinzolin
                 else:
-                    # self.result[i][j] = [13, 34, 227] #Rouge
-                    self.result[i][j] = [96, 203, 255] #Rouge
-                    # self.result[i][j] = self.couleur2 #Rouge
+                    self.result[i][j] = [0, 215, 255]  # Or
+                # self.result[i][j] = [13, 34, 227] #Rouge
+                # self.result[i][j] = self.couleur2 #Rouge
 
 
     def show(self):
@@ -219,12 +217,12 @@ class Morphogene():
         # cv2.imwrite(filename + "_I.png", self.i)
         cv2.imwrite(filename + ".png", self.result)
 
-test = Morphogene(0.04, 0.0002, 1, 6, 0.1, 50, 200, 200) #Résultats sympas -> resultats_5
+test = Morphogene(0.04, 0.0002, 1, 1, 0.00028, 150, 100, 100) #Résultats sympas -> resultats_5
 # test = Morphogene(0.04, 0.0002, 1, 2, 0.06, 50, 250, 250)
 
 startG = time.time()
 
-for i in range(100):
+for i in range(25):
     print("Ité ---> " + str(i))
     start = time.time()
     test.reagir()
@@ -236,4 +234,4 @@ for i in range(100):
     print("time : " + str(time.time() - start))
 
 print("Global time \n ************** " + str(time.time() - startG) + " **************")
-pngToGif(100)
+pngToGif(25)

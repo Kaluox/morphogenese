@@ -94,7 +94,7 @@ def Ra(a, b): return a - a ** 3 - b + alpha
 def Rb(a, b): return (a - b) * beta
 
 
-width = 100
+width = 500
 dx = 1
 dt = 0.001
 
@@ -102,7 +102,7 @@ start = time.time()
 TwoDimensionalRDEquations(
     Da, Db, Ra, Rb,
     width=width, height=width,
-    dx=dx, dt=dt, steps=10
-).plot_evolution_outcome("2dRD.png", n_steps=15)
+    dx=dx, dt=dt, steps=20
+).plot_time_evolution("2dRD.png", n_steps=150)
 
 print(time.time() -start)
